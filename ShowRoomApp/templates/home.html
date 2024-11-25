@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>Martoh</h1>
+
+<div class="container">
+    <div class="row">
+
+      {% for clare in awesome %}
+        <div class="col-md-4 mb-4">
+            <div class="card" style="width: 18rem;">
+                
+                {% if clare.image %}
+                    <img src="{{ clare.image.url }}" class="card-img-top" alt="{{ clare.name }}">
+                    {% endif %}
+                <div class="card-body">
+          <h5 class="card-title"> {{ clare.name }} </h5><br>
+           <p class="card-text">{{ clare.description }}</p> <br>
+           <p class="card-text"><strong>Price:</strong> {{ clare.price }}</p> <br>
+          <p class="card-text"><strong>Email:</strong> {{ clare.email }}</p> <br>
+          </div>
+
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><strong>Phone:</strong> {{ clare.phone_number }} </li>
+                  <li class="list-group-item"><strong>Address:</strong> {{ clare.address }}</li>
+                  <li class="list-group-item"><strong>Email:</strong> {{ clare.email }} <br></li>
+                </ul>
+                <div class="card-body">
+                  {% if clare.website %}
+                        <a href="{{ clare.website }}" class="card-link" target="_blank">Visit Website</a>
+                        {% endif %}
+                  
+                </div>
+               
+              </div> 
+              
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
